@@ -31,7 +31,6 @@
   html { background: var(--bg); color: var(--text); font-family: var(--mono); font-size: 13px; }
   body { min-height: 100vh; overflow-x: hidden; }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(10,10,10,0.92); backdrop-filter: blur(12px);
@@ -50,24 +49,15 @@
   .nav-tab.active, .nav-tab:hover { background: var(--surface2); color: var(--text); }
   .nav-tab.active { color: var(--accent); }
 
-  /* PAGES */
   .page { display: none; padding-top: 52px; min-height: 100vh; }
   .page.active { display: block; }
 
-  /* ── OGGI ── */
+  /* OGGI */
   .oggi-wrap { max-width: 520px; margin: 0 auto; padding: 32px 20px; }
-  .oggi-date {
-    font-family: var(--serif); font-size: 11px; font-weight: 300; font-style: italic;
-    color: var(--muted2); letter-spacing: .06em; margin-bottom: 4px;
-  }
+  .oggi-date { font-family: var(--serif); font-size: 11px; font-weight: 300; font-style: italic; color: var(--muted2); letter-spacing: .06em; margin-bottom: 4px; }
   .oggi-title { font-family: var(--serif); font-size: 32px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 6px; }
   .oggi-sub { font-size: 11px; color: var(--muted); letter-spacing: .04em; margin-bottom: 32px; }
-  .week-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--surface2); border: 1px solid var(--border2);
-    border-radius: 20px; padding: 4px 12px; font-size: 11px;
-    color: var(--muted2); margin-bottom: 28px;
-  }
+  .week-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 20px; padding: 4px 12px; font-size: 11px; color: var(--muted2); margin-bottom: 28px; }
   .week-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 
   .habit-list { display: flex; flex-direction: column; gap: 2px; }
@@ -78,20 +68,11 @@
     cursor: pointer; transition: all .18s; user-select: none;
     position: relative; overflow: hidden;
   }
-  .habit-item::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 3px; border-radius: 3px 0 0 3px;
-    background: var(--accent); opacity: 0; transition: opacity .2s;
-  }
+  .habit-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 3px 0 0 3px; background: var(--accent); opacity: 0; transition: opacity .2s; }
   .habit-item:hover { background: var(--surface2); border-color: var(--border2); }
   .habit-item.done { background: #111a13; border-color: rgba(90,173,122,0.2); }
   .habit-item.done::before { opacity: 1; background: var(--green); }
-  .habit-check {
-    width: 22px; height: 22px; border-radius: 6px;
-    border: 1.5px solid var(--border2); background: transparent;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; transition: all .18s; font-size: 13px;
-  }
+  .habit-check { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--border2); background: transparent; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .18s; font-size: 13px; }
   .habit-item.done .habit-check { background: var(--green); border-color: var(--green); }
   .habit-info { flex: 1; }
   .habit-name { font-size: 13px; color: var(--text); font-weight: 500; }
@@ -99,40 +80,42 @@
   .habit-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
   .habit-streak { font-size: 10px; color: var(--accent2); letter-spacing: .04em; }
 
+  /* DW stepper */
+  .dw-stepper { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+  .dw-btn { width: 24px; height: 24px; border-radius: 5px; border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .15s; flex-shrink: 0; }
+  .dw-btn:hover { background: var(--surface); border-color: var(--accent2); color: var(--accent); }
+  .dw-pips { display: flex; gap: 4px; }
+  .dw-pip { width: 16px; height: 16px; border-radius: 3px; border: 1px solid var(--border2); background: var(--surface2); transition: all .2s; display: flex; align-items: center; justify-content: center; font-size: 8px; color: transparent; }
+  .dw-pip.filled { background: var(--accent2); border-color: var(--accent); color: var(--accent); }
+  .dw-pip.complete { background: var(--green); border-color: var(--green); color: white; }
+  .dw-label { font-size: 10px; color: var(--muted); margin-left: 2px; }
+
   .progress-bar-wrap { margin: 28px 0; }
   .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 8px; letter-spacing: .04em; }
   .progress-label span:last-child { color: var(--accent); font-weight: 500; }
   .progress-bar { height: 3px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
   .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 2px; transition: width .5s cubic-bezier(.4,0,.2,1); }
 
-  /* ── DASHBOARD ── */
+  /* DASHBOARD */
   .dash-wrap { max-width: 680px; margin: 0 auto; padding: 32px 20px; }
-  .dash-header { margin-bottom: 32px; }
   .dash-title { font-family: var(--serif); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
-  .dash-sub { font-size: 11px; color: var(--muted); letter-spacing: .04em; }
-
+  .dash-sub { font-size: 11px; color: var(--muted); letter-spacing: .04em; margin-bottom: 28px; }
   .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 28px; }
   .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
   .stat-label { font-size: 10px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px; }
   .stat-value { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--text); }
   .stat-unit { font-size: 11px; color: var(--muted2); font-family: var(--mono); }
-
   .heatmap-section { margin-bottom: 28px; }
   .section-label { font-size: 10px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
   .heatmap-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
   .heatmap-day-label { font-size: 9px; color: var(--muted); text-align: center; letter-spacing: .04em; padding-bottom: 4px; }
-  .hm-cell {
-    aspect-ratio: 1; border-radius: 4px; background: var(--surface);
-    border: 1px solid var(--border); position: relative; cursor: pointer;
-    transition: all .15s;
-  }
+  .hm-cell { aspect-ratio: 1; border-radius: 4px; background: var(--surface); border: 1px solid var(--border); position: relative; cursor: pointer; transition: all .15s; }
   .hm-cell:hover { border-color: var(--border2); transform: scale(1.1); z-index: 2; }
   .hm-cell.today { border-color: var(--accent) !important; }
   .hm-cell.future { opacity: 0.3; cursor: default; }
   .hm-cell.future:hover { transform: none; }
   .hm-date { position: absolute; top: 3px; left: 4px; font-size: 8px; color: var(--muted); }
   .hm-score { position: absolute; bottom: 3px; right: 4px; font-size: 8px; font-weight: 500; }
-
   .habit-breakdown { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
   .hb-row { display: flex; align-items: center; gap: 10px; }
   .hb-name { font-size: 11px; color: var(--muted2); width: 180px; flex-shrink: 0; }
@@ -140,17 +123,12 @@
   .hb-bar { height: 100%; border-radius: 2px; background: var(--accent2); transition: width .5s; }
   .hb-pct { font-size: 10px; color: var(--muted); width: 28px; text-align: right; }
 
-  /* ── PIANO ── */
+  /* PIANO */
   .piano-wrap { max-width: 640px; margin: 0 auto; padding: 32px 20px; }
   .piano-title { font-family: var(--serif); font-size: 26px; font-weight: 700; margin-bottom: 6px; }
   .piano-sub { font-size: 11px; color: var(--muted); margin-bottom: 32px; }
-
   .week-block { margin-bottom: 16px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
-  .wb-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 18px; background: var(--surface); border-bottom: 1px solid var(--border);
-    cursor: pointer;
-  }
+  .wb-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: var(--surface); border-bottom: 1px solid var(--border); cursor: pointer; }
   .wb-header:hover { background: var(--surface2); }
   .wb-week { font-family: var(--serif); font-size: 16px; font-weight: 700; }
   .wb-dates { font-size: 10px; color: var(--muted); letter-spacing: .04em; }
@@ -158,10 +136,7 @@
   .wb-body { padding: 16px 18px; display: none; }
   .wb-body.open { display: block; }
   .wb-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-  .pill {
-    font-size: 10px; padding: 3px 10px; border-radius: 20px;
-    border: 1px solid; letter-spacing: .03em;
-  }
+  .pill { font-size: 10px; padding: 3px 10px; border-radius: 20px; border: 1px solid; letter-spacing: .03em; }
   .pill-amber { background: rgba(232,200,122,0.1); color: var(--accent); border-color: rgba(232,200,122,0.25); }
   .pill-green { background: rgba(90,173,122,0.1); color: var(--green); border-color: rgba(90,173,122,0.25); }
   .pill-blue { background: rgba(90,138,173,0.1); color: var(--blue); border-color: rgba(90,138,173,0.25); }
@@ -169,20 +144,12 @@
   .pill-gray { background: rgba(107,104,96,0.15); color: var(--muted2); border-color: rgba(107,104,96,0.25); }
   .wb-desc { font-size: 12px; color: var(--muted2); line-height: 1.7; margin-bottom: 12px; }
   .wb-note { font-size: 11px; color: var(--muted); font-style: italic; padding: 8px 12px; border-left: 2px solid var(--border2); }
-
   .routine-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
   .routine-table td { padding: 7px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
   .rt-time { font-size: 10px; color: var(--muted); width: 80px; padding-top: 8px; font-family: var(--mono); }
   .rt-task { font-size: 12px; color: var(--text); }
   .rt-tag { display: inline-block; font-size: 9px; color: var(--accent2); background: rgba(232,200,122,0.1); border-radius: 3px; padding: 1px 5px; margin-left: 6px; letter-spacing: .04em; }
-
-  /* tooltip */
-  .tooltip {
-    position: fixed; background: var(--surface2); border: 1px solid var(--border2);
-    border-radius: 6px; padding: 8px 12px; font-size: 11px; color: var(--text);
-    pointer-events: none; z-index: 200; max-width: 180px; line-height: 1.5;
-    opacity: 0; transition: opacity .15s;
-  }
+  .tooltip { position: fixed; background: var(--surface2); border: 1px solid var(--border2); border-radius: 6px; padding: 8px 12px; font-size: 11px; color: var(--text); pointer-events: none; z-index: 200; max-width: 180px; line-height: 1.5; opacity: 0; transition: opacity .15s; }
   .tooltip.show { opacity: 1; }
 </style>
 </head>
@@ -191,9 +158,9 @@
 <nav>
   <div class="nav-logo">GIUGNO <span>one shot · one opportunity</span></div>
   <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('oggi')">Oggi</button>
-    <button class="nav-tab" onclick="showPage('dashboard')">Dashboard</button>
-    <button class="nav-tab" onclick="showPage('piano')">Piano</button>
+    <button class="nav-tab active" onclick="showPage('oggi', event)">Oggi</button>
+    <button class="nav-tab" onclick="showPage('dashboard', event)">Dashboard</button>
+    <button class="nav-tab" onclick="showPage('piano', event)">Piano</button>
   </div>
 </nav>
 
@@ -201,7 +168,7 @@
 <div class="page active" id="page-oggi">
   <div class="oggi-wrap">
     <div class="oggi-date" id="oggi-date"></div>
-    <div class="oggi-title" id="oggi-greeting">Buongiorno.</div>
+    <div class="oggi-title" id="oggi-greeting">Buongiorno, Jimmy!</div>
     <div class="oggi-sub" id="oggi-daynum"></div>
     <div class="week-badge"><span class="dot"></span><span id="week-label">Settimana 1 — Detox social</span></div>
     <div class="progress-bar-wrap">
@@ -215,39 +182,21 @@
 <!-- DASHBOARD -->
 <div class="page" id="page-dashboard">
   <div class="dash-wrap">
-    <div class="dash-header">
-      <div class="dash-title">Giugno 2025</div>
-      <div class="dash-sub">heatmap mensile · 8 abitudini</div>
-    </div>
+    <div class="dash-title">Giugno 2026</div>
+    <div class="dash-sub">heatmap mensile · 8 abitudini</div>
     <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-label">Giorni perfetti</div>
-        <div><span class="stat-value" id="s-perfect">0</span><span class="stat-unit"> /30</span></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Streak attuale</div>
-        <div><span class="stat-value" id="s-streak">0</span><span class="stat-unit"> gg</span></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">% completamento</div>
-        <div><span class="stat-value" id="s-pct">0</span><span class="stat-unit"> %</span></div>
-      </div>
+      <div class="stat-card"><div class="stat-label">Giorni perfetti</div><div><span class="stat-value" id="s-perfect">0</span><span class="stat-unit"> /30</span></div></div>
+      <div class="stat-card"><div class="stat-label">Streak attuale</div><div><span class="stat-value" id="s-streak">0</span><span class="stat-unit"> gg</span></div></div>
+      <div class="stat-card"><div class="stat-label">% completamento</div><div><span class="stat-value" id="s-pct">0</span><span class="stat-unit"> %</span></div></div>
     </div>
-
     <div class="heatmap-section">
       <div class="section-label">Heatmap — intensità giornaliera</div>
       <div class="heatmap-grid">
-        <div class="heatmap-day-label">LUN</div>
-        <div class="heatmap-day-label">MAR</div>
-        <div class="heatmap-day-label">MER</div>
-        <div class="heatmap-day-label">GIO</div>
-        <div class="heatmap-day-label">VEN</div>
-        <div class="heatmap-day-label">SAB</div>
-        <div class="heatmap-day-label">DOM</div>
+        <div class="heatmap-day-label">LUN</div><div class="heatmap-day-label">MAR</div><div class="heatmap-day-label">MER</div>
+        <div class="heatmap-day-label">GIO</div><div class="heatmap-day-label">VEN</div><div class="heatmap-day-label">SAB</div><div class="heatmap-day-label">DOM</div>
       </div>
       <div class="heatmap-grid" id="heatmap-grid" style="margin-top:4px;"></div>
     </div>
-
     <div class="heatmap-section">
       <div class="section-label">Habit breakdown — mese corrente</div>
       <div class="habit-breakdown" id="habit-breakdown"></div>
@@ -265,9 +214,9 @@
     <table class="routine-table">
       <tr><td class="rt-time">06:00–07:00</td><td class="rt-task">Sveglia · colazione · camminata · meditazione <span class="rt-tag">rituale</span></td></tr>
       <tr><td class="rt-time">07:00–08:00</td><td class="rt-task">Tesi dottorato <span class="rt-tag">non neg.</span></td></tr>
-      <tr><td class="rt-time">08:00–13:00</td><td class="rt-task">Blocco deep work #1 — Zanichelli / progetti + pause camminata</td></tr>
+      <tr><td class="rt-time">08:00–13:00</td><td class="rt-task">Blocco deep work #1 — Zanichelli · Sophia · Salento di Puglia · progetti personali + pause camminata</td></tr>
       <tr><td class="rt-time">13:00–14:00</td><td class="rt-task">Pausa pranzo</td></tr>
-      <tr><td class="rt-time">14:00–16:00</td><td class="rt-task">Blocco deep work #2 — ripetizioni / networking</td></tr>
+      <tr><td class="rt-time">14:00–16:00</td><td class="rt-task">Blocco deep work #2 — networking · altri progetti</td></tr>
       <tr><td class="rt-time">16:00–17:00</td><td class="rt-task">Attività fisica · plank · riflessione filosofica <span class="rt-tag">corpo</span></td></tr>
       <tr><td class="rt-time">17:00–21:00</td><td class="rt-task">Tempo libero</td></tr>
       <tr><td class="rt-time">21:00–22:00</td><td class="rt-task">Decompressione · lettura · letto <span class="rt-tag">chiusura</span></td></tr>
@@ -277,7 +226,7 @@
 
     <div class="week-block">
       <div class="wb-header" onclick="toggleWeek(this)">
-        <div><div class="wb-week">Settimana 1</div><div class="wb-dates">2–8 giugno · slancio e reset digitale</div></div>
+        <div><div class="wb-week">Settimana 1</div><div class="wb-dates">1–7 giugno · slancio e reset digitale</div></div>
         <div class="wb-arrow">▼</div>
       </div>
       <div class="wb-body open">
@@ -285,45 +234,45 @@
           <span class="pill pill-red">🚫 Social detox</span>
           <span class="pill pill-blue">Zanichelli #1</span>
         </div>
-        <div class="wb-desc">Installare la routine base. Sette giorni senza social — massima larghezza di banda cognitiva. 1h/die Zanichelli nel blocco mattutino. Tesi alle 7 senza eccezioni. Corsa spiaggia come rituale di apertura.</div>
+        <div class="wb-desc">Installare la routine base da zero. Sette giorni senza social — massima larghezza di banda cognitiva per entrare nei blocchi DW. 1h/die Zanichelli nel blocco mattutino. Tesi alle 7 senza eccezioni. Corsa spiaggia come rituale di apertura.</div>
         <div class="wb-note">Il detox social nella prima settimana libera spazio mentale per le sfide fisiche che verranno.</div>
       </div>
     </div>
 
     <div class="week-block">
       <div class="wb-header" onclick="toggleWeek(this)">
-        <div><div class="wb-week">Settimana 2</div><div class="wb-dates">9–15 giugno · eliminazione caffeina</div></div>
+        <div><div class="wb-week">Settimana 2</div><div class="wb-dates">8–14 giugno · consolidamento + social detox cont.</div></div>
         <div class="wb-arrow">▼</div>
       </div>
       <div class="wb-body">
         <div class="wb-badges">
-          <span class="pill pill-amber">☕ Niente caffè</span>
+          <span class="pill pill-red">🚫 Social detox (cont.)</span>
           <span class="pill pill-blue">Zanichelli #2</span>
         </div>
-        <div class="wb-desc">La routine è installata. Togliere il caffè ora — lontano dallo stress adattativo della settimana 1. I primi 3 giorni possono portare cefalea: è previsto, non è un fallimento. Secondo laboratorio Zanichelli.</div>
-        <div class="wb-note">Non sovrapporre caffè + digiuno esteso: il corpo si adatta meglio per fasi successive.</div>
+        <div class="wb-desc">La routine è in rodaggio — si consolida. Il social detox continua per tutta la seconda settimana: doppia dose di disconnessione digitale. Secondo laboratorio Zanichelli. Caffè ancora presente — nessuna pressione aggiuntiva.</div>
+        <div class="wb-note">Due settimane senza social = reset profondo dell'attenzione prima delle sfide fisiche.</div>
       </div>
     </div>
 
     <div class="week-block">
       <div class="wb-header" onclick="toggleWeek(this)">
-        <div><div class="wb-week">Settimana 3</div><div class="wb-dates">16–22 giugno · preparazione al digiuno</div></div>
+        <div><div class="wb-week">Settimana 3</div><div class="wb-dates">15–21 giugno · eliminazione caffè + prep. digiuno</div></div>
         <div class="wb-arrow">▼</div>
       </div>
       <div class="wb-body">
         <div class="wb-badges">
+          <span class="pill pill-amber">☕ Niente caffè</span>
           <span class="pill pill-gray">16:8 → 18:6</span>
           <span class="pill pill-blue">Zanichelli #3</span>
-          <span class="pill pill-amber">☕ Niente caffè (cont.)</span>
         </div>
-        <div class="wb-desc">Preparazione ai 3 giorni: rafforzare il digiuno intermittente riducendo la finestra (16:8 → 18:6 verso fine settimana). Nessun altro detox sovrapposto. Sprint finale tesi se non chiusa.</div>
+        <div class="wb-desc">Eliminare il caffè ora che la routine è installata e il reset digitale è fatto. I primi 3 giorni possono portare cefalea: è previsto, non è un fallimento. Contemporaneamente rafforzare il digiuno intermittente (16:8 → 18:6 verso fine settimana) per prepararsi alla settimana 4. Terzo laboratorio Zanichelli.</div>
         <div class="wb-note">Arrivare alla settimana 4 in condizione, non esausto.</div>
       </div>
     </div>
 
     <div class="week-block">
       <div class="wb-header" onclick="toggleWeek(this)">
-        <div><div class="wb-week">Settimana 4</div><div class="wb-dates">23–30 giugno · digiuno + triplo detox</div></div>
+        <div><div class="wb-week">Settimana 4</div><div class="wb-dates">22–30 giugno · digiuno + triplo detox</div></div>
         <div class="wb-arrow">▼</div>
       </div>
       <div class="wb-body">
@@ -331,10 +280,10 @@
           <span class="pill pill-red">💧 3 giorni digiuno</span>
           <span class="pill pill-red">🚫 Alcol</span>
           <span class="pill pill-green">🚫 Zuccheri</span>
-          <span class="pill pill-amber">☕ No caffè</span>
+          <span class="pill pill-amber">☕ No caffè (cont.)</span>
           <span class="pill pill-blue">Zanichelli #4</span>
         </div>
-        <div class="wb-desc">I 3 giorni di digiuno si collocano a metà settimana (25–27 circa) con ramp-in e ramp-out. Tutte le restrizioni alimentari attive contemporaneamente. Zanichelli prima o dopo il digiuno. Attività fisica ridotta a camminate + stretching nei giorni di digiuno.</div>
+        <div class="wb-desc">I 3 giorni di digiuno si collocano a metà settimana (25–27 circa) con un giorno di ramp-in e uno di ramp-out. Tutte le restrizioni alimentari attive contemporaneamente: niente alcol, niente zuccheri, niente caffè. Zanichelli prima o dopo il digiuno. Attività fisica ridotta a camminate + stretching nei giorni di digiuno.</div>
         <div class="wb-note">Nei 3 giorni di digiuno: deep work leggero, niente corsa intensa. Idratazione prioritaria.</div>
       </div>
     </div>
@@ -344,101 +293,146 @@
 <div class="tooltip" id="tooltip"></div>
 
 <script>
-// ── DATI ──
+// ─────────────────────────────────────────
+// HABIT DEFINITIONS
+// Per modificare un'abitudine: cambia "name" e/o "meta"
+// ─────────────────────────────────────────
 const HABITS = [
-  { id: 'sveglia', name: 'Sveglia 6:00', meta: 'ancora della giornata' },
-  { id: 'tesi', name: 'Tesi dottorato (1h DW)', meta: 'non negoziabile · deadline fine mese' },
-  { id: 'dw', name: '6h deep work totali', meta: 'Zanichelli + progetti + ripetizioni' },
-  { id: 'fitness', name: 'Attività fisica (1h)', meta: 'wing chun · corsa · yoga · samba' },
-  { id: 'passi', name: '15.000 passi', meta: 'movimento passivo + camminate' },
-  { id: 'plank', name: 'Plank + riflessione filosofica', meta: 'rituale mente–corpo' },
-  { id: 'lettura', name: 'Lettura ≥30 min', meta: 'chiusura serale' },
-  { id: 'amore', name: '1 modo per amarsi', meta: 'da "50 modi per amare me stesso"' }
+  { id: 'sveglia',  name: 'Sveglia 6:00',                  meta: 'ancora della giornata' },
+  { id: 'tesi',     name: 'Tesi dottorato (1h DW)',         meta: 'non negoziabile · deadline fine mese' },
+  { id: 'dw',       name: '6h deep work',                   meta: 'Zanichelli · Sophia · Salento di Puglia · personali', isDW: true },
+  { id: 'fitness',  name: 'Attività fisica (1h)',            meta: 'wing chun · corsa · yoga · samba · beach volley · surf' },
+  { id: 'doccia',   name: 'Doccia fredda',                   meta: 'rituale di attivazione' },
+  { id: 'plank',    name: 'Plank + riflessione filosofica',  meta: 'rituale mente–corpo' },
+  { id: 'lettura',  name: 'Lettura ≥30 min',                meta: 'chiusura serale' },
+  { id: 'amore',    name: '1 modo per amarsi',               meta: 'da "50 modi per amare me stesso"' }
 ];
 
+// ─────────────────────────────────────────
+// WEEK LABELS (badge in "Oggi")
+// ─────────────────────────────────────────
 const WEEKS = [
-  { label: 'Sett. 1 — Detox social', start: 2, end: 8 },
-  { label: 'Sett. 2 — Niente caffè', start: 9, end: 15 },
-  { label: 'Sett. 3 — Prep. digiuno', start: 16, end: 22 },
-  { label: 'Sett. 4 — Digiuno + detox', start: 23, end: 30 }
+  { label: 'Sett. 1 — Detox social',        start: 1,  end: 7  },
+  { label: 'Sett. 2 — Detox social (cont.)', start: 8,  end: 14 },
+  { label: 'Sett. 3 — Niente caffè',         start: 15, end: 21 },
+  { label: 'Sett. 4 — Digiuno + detox',      start: 22, end: 30 }
 ];
 
-// ── STORAGE ──
-function saveData(data) { localStorage.setItem('giugno2025', JSON.stringify(data)); }
-function loadData() {
-  try { return JSON.parse(localStorage.getItem('giugno2025')) || {}; } catch { return {}; }
-}
+// ─────────────────────────────────────────
+// STORAGE
+// ─────────────────────────────────────────
+function saveData(data) { try { localStorage.setItem('giugno2026', JSON.stringify(data)); } catch(e){} }
+function loadData() { try { return JSON.parse(localStorage.getItem('giugno2026')) || {}; } catch { return {}; } }
 let appData = loadData();
+function getDayData(day) { return appData['day_' + day] || { done: [], dw: 0 }; }
+function setDayData(day, data) { appData['day_' + day] = data; saveData(appData); }
 
-function getKey(day) { return `day_${day}`; }
-function getDayData(day) { return appData[getKey(day)] || { done: [] }; }
-function setDayData(day, data) { appData[getKey(day)] = data; saveData(appData); }
-
-// ── DATE ──
-const NOW = new Date();
+// ─────────────────────────────────────────
+// DATE — parte da 1 giugno 2026
+// ─────────────────────────────────────────
+const NOW   = new Date();
 const TODAY = NOW.getDate();
-const MONTH = NOW.getMonth(); // 5 = giugno
-const YEAR = NOW.getFullYear();
-const IS_JUNE = MONTH === 5 && YEAR === 2025;
-const CURRENT_DAY = IS_JUNE ? TODAY : 1;
+const IS_JUNE = NOW.getMonth() === 5 && NOW.getFullYear() === 2026;
+const CURRENT_DAY = IS_JUNE ? Math.min(TODAY, 30) : 1;
 
 function getWeekLabel(day) {
   for (const w of WEEKS) if (day >= w.start && day <= w.end) return w.label;
-  return 'Giugno 2025';
+  return 'Giugno 2026';
 }
 
-function getDayOfWeekForJune1() {
-  return new Date(2025, 5, 1).getDay(); // 0=dom
-}
-
-// ── OGGI PAGE ──
+// ─────────────────────────────────────────
+// RENDER OGGI
+// ─────────────────────────────────────────
 function renderOggi() {
   const day = CURRENT_DAY;
   const dayData = getDayData(day);
   const done = dayData.done || [];
-  const nDone = done.length;
-  const pct = Math.round((nDone / HABITS.length) * 100);
+  const dwHours = dayData.dw || 0;
 
-  // Date display
-  const days = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
-  const months = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
-  const d = IS_JUNE ? NOW : new Date(2025, 5, day);
-  document.getElementById('oggi-date').textContent = days[d.getDay()] + ', ' + day + ' ' + months[5] + ' 2025';
+  // Progress — DW conta come fatto solo se dwHours >= 6
+  const isDWDone = dwHours >= 6;
+  const effectiveDone = done.filter(id => id !== 'dw').length + (isDWDone ? 1 : 0);
+  const pct = Math.round((effectiveDone / HABITS.length) * 100);
+
+  // Date
+  const dayNames = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+  const d = IS_JUNE ? NOW : new Date(2026, 5, day);
+  document.getElementById('oggi-date').textContent = dayNames[d.getDay()] + ', ' + day + ' giugno 2026';
   document.getElementById('oggi-daynum').textContent = 'GIORNO ' + day + ' DI 30 — ' + (30 - day) + ' GIORNI ALLA FINE';
   document.getElementById('week-label').textContent = getWeekLabel(day);
 
-  const h = NOW.getHours();
-  let greeting = 'Buongiorno.';
-  if (h >= 12 && h < 18) greeting = 'Buon pomeriggio.';
-  else if (h >= 18) greeting = 'Buonasera.';
-  document.getElementById('oggi-greeting').textContent = greeting;
+  // Greeting fisso
+  document.getElementById('oggi-greeting').textContent = 'Buongiorno, Jimmy!';
 
-  document.getElementById('prog-text').textContent = nDone + ' / ' + HABITS.length;
+  document.getElementById('prog-text').textContent = effectiveDone + ' / ' + HABITS.length;
   document.getElementById('prog-fill').style.width = pct + '%';
 
   const list = document.getElementById('habit-list');
   list.innerHTML = '';
+
   HABITS.forEach(h => {
-    const isDone = done.includes(h.id);
+    const isHabitDone = h.isDW ? isDWDone : done.includes(h.id);
     const streak = calcStreak(h.id, day);
     const el = document.createElement('div');
-    el.className = 'habit-item' + (isDone ? ' done' : '');
-    el.innerHTML = `
-      <div class="habit-check">${isDone ? '✓' : ''}</div>
-      <div class="habit-info">
-        <div class="habit-name">${h.name}</div>
-        <div class="habit-meta">${h.meta}</div>
-      </div>
-      ${streak > 1 ? `<div class="habit-streak">${streak}🔥</div>` : ''}
-    `;
-    el.onclick = () => toggleHabit(h.id, day);
-    list.appendChild(el);
+    el.className = 'habit-item' + (isHabitDone ? ' done' : '');
+
+    if (h.isDW) {
+      // Special DW stepper — non clickable on the outer div
+      el.innerHTML = `
+        <div class="habit-check">${isHabitDone ? '✓' : ''}</div>
+        <div class="habit-info">
+          <div class="habit-name">${h.name}</div>
+          <div class="habit-meta">${h.meta}</div>
+          <div class="dw-stepper" onclick="event.stopPropagation()">
+            <button class="dw-btn" onclick="changeDW(${day}, -1)">−</button>
+            <div class="dw-pips" id="dw-pips-${day}"></div>
+            <button class="dw-btn" onclick="changeDW(${day}, 1)">+</button>
+            <span class="dw-label" id="dw-label-${day}">${dwHours}/6h</span>
+          </div>
+        </div>
+        ${streak > 1 ? `<div class="habit-streak">${streak}🔥</div>` : ''}
+      `;
+      list.appendChild(el);
+      renderDWPips(day, dwHours);
+    } else {
+      el.innerHTML = `
+        <div class="habit-check">${isHabitDone ? '✓' : ''}</div>
+        <div class="habit-info">
+          <div class="habit-name">${h.name}</div>
+          <div class="habit-meta">${h.meta}</div>
+        </div>
+        ${streak > 1 ? `<div class="habit-streak">${streak}🔥</div>` : ''}
+      `;
+      el.onclick = () => toggleHabit(h.id, day);
+      list.appendChild(el);
+    }
   });
+}
+
+function renderDWPips(day, hours) {
+  const container = document.getElementById('dw-pips-' + day);
+  if (!container) return;
+  container.innerHTML = '';
+  for (let i = 1; i <= 6; i++) {
+    const pip = document.createElement('div');
+    pip.className = 'dw-pip' + (i <= hours ? (hours >= 6 ? ' complete' : ' filled') : '');
+    pip.textContent = i <= hours ? '✓' : '';
+    container.appendChild(pip);
+  }
+}
+
+function changeDW(day, delta) {
+  const data = getDayData(day);
+  const current = data.dw || 0;
+  const next = Math.max(0, Math.min(6, current + delta));
+  setDayData(day, { ...data, dw: next });
+  renderOggi();
+  renderDashboard();
 }
 
 function toggleHabit(habitId, day) {
   const data = getDayData(day);
-  const done = data.done || [];
+  const done = [...(data.done || [])];
   const idx = done.indexOf(habitId);
   if (idx === -1) done.push(habitId);
   else done.splice(idx, 1);
@@ -451,29 +445,34 @@ function calcStreak(habitId, upToDay) {
   let streak = 0;
   for (let d = upToDay; d >= 1; d--) {
     const data = getDayData(d);
-    if ((data.done || []).includes(habitId)) streak++;
-    else break;
+    const hit = habitId === 'dw' ? (data.dw || 0) >= 6 : (data.done || []).includes(habitId);
+    if (hit) streak++; else break;
   }
   return streak;
 }
 
-// ── DASHBOARD ──
+function getDayScore(day) {
+  const data = getDayData(day);
+  const done = data.done || [];
+  const dwDone = (data.dw || 0) >= 6 ? 1 : 0;
+  return done.filter(id => id !== 'dw').length + dwDone;
+}
+
+// ─────────────────────────────────────────
+// RENDER DASHBOARD
+// ─────────────────────────────────────────
 function renderDashboard() {
-  // Stats
+  const maxDay = IS_JUNE ? CURRENT_DAY : 0;
   let perfect = 0, totalDone = 0, totalPossible = 0, streak = 0;
-  const maxDay = IS_JUNE ? Math.min(TODAY, 30) : CURRENT_DAY;
 
   for (let d = 1; d <= maxDay; d++) {
-    const done = getDayData(d).done || [];
-    totalDone += done.length;
+    const score = getDayScore(d);
+    totalDone += score;
     totalPossible += HABITS.length;
-    if (done.length === HABITS.length) perfect++;
+    if (score === HABITS.length) perfect++;
   }
-  // streak
   for (let d = maxDay; d >= 1; d--) {
-    const done = getDayData(d).done || [];
-    if (done.length === HABITS.length) streak++;
-    else break;
+    if (getDayScore(d) === HABITS.length) streak++; else break;
   }
   const pct = totalPossible > 0 ? Math.round((totalDone / totalPossible) * 100) : 0;
 
@@ -481,22 +480,17 @@ function renderDashboard() {
   document.getElementById('s-streak').textContent = streak;
   document.getElementById('s-pct').textContent = pct;
 
-  // Heatmap
+  // Heatmap — June 1 2026 is a Monday → offset = 0
   const grid = document.getElementById('heatmap-grid');
   grid.innerHTML = '';
-  // June 1 2025 is a Sunday = index 6 (mon=0)
-  // Fill blanks before June 1
-  const june1dow = new Date(2025, 5, 1).getDay(); // 0=sun
-  const offset = june1dow === 0 ? 6 : june1dow - 1; // convert to mon=0
+  const june1dow = new Date(2026, 5, 1).getDay(); // 1 = monday
+  const offset = june1dow === 0 ? 6 : june1dow - 1;
   for (let i = 0; i < offset; i++) {
-    const blank = document.createElement('div');
-    blank.style.aspectRatio = '1';
-    grid.appendChild(blank);
+    const blank = document.createElement('div'); blank.style.aspectRatio = '1'; grid.appendChild(blank);
   }
   for (let d = 1; d <= 30; d++) {
-    const done = getDayData(d).done || [];
-    const score = done.length;
-    const isFuture = IS_JUNE ? d > TODAY : false;
+    const score = getDayScore(d);
+    const isFuture = IS_JUNE ? d > TODAY : true;
     const isToday = IS_JUNE && d === TODAY;
     const cell = document.createElement('div');
     cell.className = 'hm-cell' + (isFuture ? ' future' : '') + (isToday ? ' today' : '');
@@ -507,40 +501,50 @@ function renderDashboard() {
     }
     cell.innerHTML = `<span class="hm-date">${d}</span>${score > 0 && !isFuture ? `<span class="hm-score" style="color:rgba(232,200,122,${Math.min(1,opacity+0.3)})">${score}</span>` : ''}`;
     if (!isFuture) {
-      cell.addEventListener('mousemove', e => showTooltip(e, d, done));
+      cell.addEventListener('mousemove', e => showTooltip(e, d));
       cell.addEventListener('mouseleave', hideTooltip);
     }
     grid.appendChild(cell);
   }
 
-  // Habit breakdown
+  // Breakdown
   const bd = document.getElementById('habit-breakdown');
   bd.innerHTML = '';
   HABITS.forEach(h => {
     let cnt = 0;
     for (let d = 1; d <= maxDay; d++) {
-      if ((getDayData(d).done || []).includes(h.id)) cnt++;
+      const data = getDayData(d);
+      const hit = h.isDW ? (data.dw || 0) >= 6 : (data.done || []).includes(h.id);
+      if (hit) cnt++;
     }
-    const pct2 = maxDay > 0 ? Math.round((cnt / maxDay) * 100) : 0;
-    bd.innerHTML += `<div class="hb-row">
-      <div class="hb-name">${h.name}</div>
-      <div class="hb-bar-wrap"><div class="hb-bar" style="width:${pct2}%"></div></div>
-      <div class="hb-pct">${pct2}%</div>
-    </div>`;
+    const p = maxDay > 0 ? Math.round((cnt / maxDay) * 100) : 0;
+    bd.innerHTML += `<div class="hb-row"><div class="hb-name">${h.name}</div><div class="hb-bar-wrap"><div class="hb-bar" style="width:${p}%"></div></div><div class="hb-pct">${p}%</div></div>`;
   });
 }
 
-function showTooltip(e, day, done) {
+function showTooltip(e, day) {
+  const data = getDayData(day);
+  const score = getDayScore(day);
+  const dw = data.dw || 0;
   const t = document.getElementById('tooltip');
-  const names = done.map(id => HABITS.find(h => h.id === id)?.name.split(' ')[0]).filter(Boolean);
-  t.innerHTML = `<strong>Giugno ${day}</strong><br>${done.length}/8 habit${done.length > 0 ? '<br>' + names.join(', ') : ''}`;
+  t.innerHTML = `<strong>Giugno ${day}</strong><br>${score}/8 habit · DW ${dw}/6h`;
   t.style.left = (e.clientX + 12) + 'px';
   t.style.top = (e.clientY - 8) + 'px';
   t.classList.add('show');
 }
 function hideTooltip() { document.getElementById('tooltip').classList.remove('show'); }
 
-// ── PIANO ──
+// ─────────────────────────────────────────
+// NAV & PIANO
+// ─────────────────────────────────────────
+function showPage(name, evt) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  if (evt && evt.target) evt.target.classList.add('active');
+  if (name === 'dashboard') renderDashboard();
+}
+
 function toggleWeek(header) {
   const body = header.nextElementSibling;
   const arrow = header.querySelector('.wb-arrow');
@@ -549,16 +553,9 @@ function toggleWeek(header) {
   arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
 }
 
-// ── NAV ──
-function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  event.target.classList.add('active');
-  if (name === 'dashboard') renderDashboard();
-}
-
-// ── INIT ──
+// ─────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────
 renderOggi();
 renderDashboard();
 </script>
