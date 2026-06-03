@@ -49,6 +49,14 @@
   .oggi-title { font-family: var(--serif); font-size: 32px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 6px; }
   .oggi-sub { font-size: 11px; color: var(--muted); letter-spacing: .04em; margin-bottom: 16px; }
 
+  /* day nav */
+  .day-nav { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .day-nav-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border2); background: var(--surface2); color: var(--muted2); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .15s; flex-shrink: 0; }
+  .day-nav-btn:hover:not(:disabled) { background: var(--surface); color: var(--accent); border-color: var(--accent2); }
+  .day-nav-btn:disabled { opacity: 0.2; cursor: default; }
+  .day-nav-info { flex: 1; }
+  .day-nav-back { font-size: 10px; color: var(--muted); letter-spacing: .04em; font-style: italic; }
+
   /* countdown + deadline */
   .meta-row { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
   .week-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 20px; padding: 4px 12px; font-size: 11px; color: var(--muted2); }
@@ -192,8 +200,15 @@
 <!-- OGGI -->
 <div class="page active" id="page-oggi">
   <div class="oggi-wrap">
-    <div class="oggi-date" id="oggi-date"></div>
-    <div class="oggi-title">Buongiorno, Jimmy!</div>
+    <div class="day-nav">
+      <button class="day-nav-btn" id="btn-prev" onclick="navigateDay(-1)">‹</button>
+      <div class="day-nav-info">
+        <div class="oggi-date" id="oggi-date"></div>
+        <div class="day-nav-back" id="day-nav-back"></div>
+      </div>
+      <button class="day-nav-btn" id="btn-next" onclick="navigateDay(1)">›</button>
+    </div>
+    <div class="oggi-title" id="oggi-greeting">Buongiorno, Jimmy!</div>
     <div class="oggi-sub" id="oggi-daynum"></div>
     <div class="meta-row">
       <div class="week-badge"><span class="dot"></span><span id="week-label">—</span></div>
@@ -374,7 +389,16 @@ const NOW   = new Date();
 const IS_JUNE_2026 = NOW.getMonth() === 5 && NOW.getFullYear() === 2026;
 const IS_BEFORE    = NOW < new Date(2026, 5, 1, 0, 0, 0);
 const TODAY        = NOW.getDate();
-const CURRENT_DAY  = IS_JUNE_2026 ? Math.min(TODAY, 30) : (IS_BEFORE ? 1 : 30);
+const TODAY_DAY    = IS_JUNE_2026 ? Math.min(TODAY, 30) : (IS_BEFORE ? 0 : 30);
+const CURRENT_DAY  = TODAY_DAY || 1;
+let   VIEW_DAY     = CURRENT_DAY; // giorno attualmente visualizzato
+
+function navigateDay(delta) {
+  const next = VIEW_DAY + delta;
+  if (next < 1 || next > CURRENT_DAY) return;
+  VIEW_DAY = next;
+  renderOggi();
+}
 
 function daysToDeadline() {
   const deadline = new Date(2026, 5, 30, 23, 59, 59);
@@ -417,7 +441,8 @@ function updateCountdown() {
 // RENDER OGGI
 // ─────────────────────────────────────────
 function renderOggi() {
-  const day = CURRENT_DAY;
+  const day = VIEW_DAY;
+  const isToday = day === CURRENT_DAY;
   const dayData = getDayData(day);
   const done = dayData.done || [];
   const dwHours = dayData.dw || 0;
@@ -426,10 +451,16 @@ function renderOggi() {
   const pct = Math.round((effectiveDone / HABITS.length) * 100);
 
   const dayNames = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
-  const d = IS_JUNE_2026 ? NOW : new Date(2026, 5, day);
+  const d = new Date(2026, 5, day);
   document.getElementById('oggi-date').textContent = dayNames[d.getDay()] + ', ' + day + ' giugno 2026';
+  document.getElementById('day-nav-back').textContent = isToday ? '' : '← stai modificando un giorno passato';
+  document.getElementById('oggi-greeting').textContent = isToday ? 'Buongiorno, Jimmy!' : 'Giugno ' + day;
   document.getElementById('oggi-daynum').textContent = 'GIORNO ' + day + ' DI 30 — ' + (30 - day) + ' GIORNI ALLA FINE';
   document.getElementById('week-label').textContent = getWeekLabel(day);
+
+  // nav buttons
+  document.getElementById('btn-prev').disabled = day <= 1;
+  document.getElementById('btn-next').disabled = day >= CURRENT_DAY;
 
   const dtd = daysToDeadline();
   document.getElementById('deadline-days').textContent = dtd === 0 ? 'oggi!' : dtd + ' gg';
@@ -615,7 +646,7 @@ function toggleWeek(header) {
 // ─────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────
-// checkPrestart();
+checkPrestart();
 renderOggi();
 renderDashboard();
 </script>
